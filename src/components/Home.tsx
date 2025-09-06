@@ -4,7 +4,7 @@ import Section from "./Section";
 
 export default function Home() {
   return (
-    <Section>
+    <Section styling={"bg-radial from-neutral-700 from-0% to-black to-100%"}>
       <div className="justify-self-center relative" id="home">
         <h1 className="text-8xl font-light">
           Hello, i'm <strong className="font-medium">Michael</strong>

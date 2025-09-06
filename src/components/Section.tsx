@@ -1,7 +1,3 @@
-export default function Section({ children }) {
-  return (
-    <section className="bg-radial from-stone-700 from-0% to-black to-100% h-svh px-36 flex flex-col justify-center snap-start">
-      {children}
-    </section>
-  );
+export default function Section({ children, styling }) {
+  return <section className={`${styling} px-36 h-svh flex flex-col justify-center snap-start`}>{children}</section>;
 }
