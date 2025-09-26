@@ -1,5 +1,5 @@
-import Link from "./Link";
-import Section from "./Section";
+import Link from "../Link";
+import Section from "../Section";
 import cursor from "/cursor.png";
 
 export default function Contacts() {

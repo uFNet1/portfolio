@@ -1,6 +1,6 @@
-import Button from "./Button";
-import GlowText from "./GlowText";
-import Section from "./Section";
+import Button from "../Button";
+import GlowText from "../GlowText";
+import Section from "../Section";
 
 export default function Home() {
   return (

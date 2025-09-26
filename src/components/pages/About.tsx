@@ -1,4 +1,4 @@
-import Section from "./Section";
+import Section from "../Section";
 import portrait from "/portrait.webp";
 export default function About() {
   const sectionStyles = "bg-linear-to-b from-black to-neutral-700 from-0% to-100%";
