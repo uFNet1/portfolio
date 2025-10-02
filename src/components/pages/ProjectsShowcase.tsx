@@ -26,18 +26,12 @@ export default function Project() {
   }
   function scrollHandler(e: React.UIEvent<HTMLDivElement, UIEvent>) {
     const el = e.target as HTMLDivElement;
-    if (scrollableElementsWidth !== el.clientWidth) {
-      setScrollableElementsWidth(el.clientWidth);
-    }
     if (el.scrollLeft !== 0) {
       setIsScrollbarAtStart(false);
     } else {
       setIsScrollbarAtStart(true);
     }
-    console.log(scrollableElementsWidth);
-    console.log(Math.round(el.scrollLeft));
-    console.log(el.scrollWidth);
-    const currentOffset = scrollableElementsWidth + Math.round(el.scrollLeft);
+    const currentOffset = el.clientWidth + Math.round(el.scrollLeft);
     const margin = 10;
     if (el.scrollWidth >= currentOffset - margin && el.scrollWidth <= currentOffset + margin) {
       setIsScrollbarAtEnd(true);
@@ -50,7 +44,6 @@ export default function Project() {
   }
   const [isScrollbarAtStart, setIsScrollbarAtStart] = useState(true);
   const [isScrollbarAtEnd, setIsScrollbarAtEnd] = useState(false);
-  const [scrollableElementsWidth, setScrollableElementsWidth] = useState(0);
   const [currentProject, setCurrentProject] = useState<JSX.Element | null>(null);
   return (
     <Section styling={sectionStyles}>
