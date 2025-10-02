@@ -24,3 +24,6 @@ header > a:hover:after {
   width: 100%;
   left: 0;
 }
+#scrollableProjects {
+  scrollbar-width: none;
+}

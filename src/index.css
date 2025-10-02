@@ -13,7 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
   scroll-snap-type: y mandatory;
 }
-h1 {
+h1,
+h2,
+p {
   font-family: "Montserrat", Verdana, Geneva, sans-serif;
   font-optical-sizing: auto;
+}
+
+.animated-arrow {
 }
