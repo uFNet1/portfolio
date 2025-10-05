@@ -32,6 +32,7 @@ export default function Project() {
       setIsScrollbarAtStart(true);
     }
     const currentOffset = el.clientWidth + Math.round(el.scrollLeft);
+    console.log(currentOffset);
     const margin = 10;
     if (el.scrollWidth >= currentOffset - margin && el.scrollWidth <= currentOffset + margin) {
       setIsScrollbarAtEnd(true);

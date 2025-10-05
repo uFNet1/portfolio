@@ -4,9 +4,9 @@ export default function About() {
   const sectionStyles = "bg-linear-to-b from-black to-neutral-700 from-0% to-100%";
   return (
     <Section styling={sectionStyles}>
-      <h1 className="text-8xl font-light mx-auto mb-16">About me</h1>
-      <div className="flex flex-row gap-16">
-        <div className="w-1/3 my-auto" id="about">
+      <h1 className="text-2xl md:text-8xl font-light mx-auto mb-16">About me</h1>
+      <div className="flex flex-col md:flex-row gap-16">
+        <div className="max-md:hidden w-1/4 md:w-1/3 my-auto" id="about">
           <img
             width="309px"
             height="483px"
@@ -15,8 +15,8 @@ export default function About() {
             className="outline outline-neutral-600 shadow-[33px_33px_0px_-2px] shadow-[#00000025]"
           />
         </div>
-        <div className="w-px h-full bg-neutral-400"></div>
-        <p className="w-2/3 font-light text-2xl">
+        <div className="hidden md:visible w-px h-full bg-neutral-400"></div>
+        <p className="font-light text-base md:text-2xl md:w-2/3">
           I started my <strong>web development journey in 2023</strong>, when I was building simple HTML pages for my{" "}
           <abbr title="Computer Science">CS</abbr> classes. During my first JavaScript class, I was amazed by how
           intuitive and powerful the language felt.
