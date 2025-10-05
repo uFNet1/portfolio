@@ -28,9 +28,9 @@ export default function Header({
   ];
   function calculateRelativePercentage() {
     if (position && scrollData) {
-      const currPage = position.currentElementY;
-      const currScroll = scrollData.scrollValue;
       const step = position.elementHeight;
+      const currPage = step * (position.currentElement + 1);
+      const currScroll = scrollData.scrollValue;
       const percentage = (currScroll - currPage) / step;
       return percentage * 100;
     }
@@ -58,20 +58,33 @@ export default function Header({
   // }%]`;
   const currentButtonStyles = `bg-linear-to-r from-blue-500 from-50% via-51% via-gray-500/0 to-gray-500/0 bg-[length:200%_100%]`;
   // const currentButtonStyles = `bg-linear-to-r from-blue-500 to-gray-500/0 bg-[length:200%_100%] bg-position-[-64%_0%]`;
-  const nextButtonStyles = `bg-linear-to-r to-blue-500 from-50% via-51% via-gray-500/0 from-gray-500/0 bg-[length:100%_100%] bg-position-[${
-    blobPercentage ? blobPercentage : null
-  }%]`;
+  const nextButtonStyles = `bg-linear-to-r from-gray-500/0 from-50% via-51% via-blue-500 to-blue-500 bg-[length:200%_100%]`;
+
   const prevButtonStyles = `bg-linear-to-l to-blue-500 from-gray-500/0 bg-[length:200%_100%]`;
   // const nextButtonStyles = `bg-linear-to-r from-blue-500 to-gray-500/0 bg-[length:200%_100%] bg-position-[1%]`;
   // const nextButtonStyles = `bg-red-500`;
-  console.log(Math.round(blobPercentage));
+  function positionCalculate(i: number) {
+    // console.log(blobPercentage);
+    if (!blobPercentage || !position) return 0;
+    const direction = checkDirection(blobPercentage);
+    if (direction === "next") {
+      if (i === position?.currentElement + 1) {
+        return -Math.round(blobPercentage) + "%";
+      } else if (i === position?.currentElement) return -Math.round(blobPercentage) + "%";
+    } else if (direction === "previous") {
+      if (i === position?.currentElement - 1) {
+        return -Math.round(blobPercentage) + "%";
+      } else if (i === position?.currentElement) return -Math.round(blobPercentage) + "%";
+    }
+    if (i === position?.currentElement + 1) return Math.round(blobPercentage);
+  }
   return (
     <header className="w-fit flex flex-row justify-center gap-4 max-md:mx-auto text-base md:text-2xl font-light md:right-36 top-10 sticky md:float-right items-center z-50">
       {buttons.map((e, i) => (
         <a
           key={i}
           href={e.link}
-          style={{ backgroundPositionX: blobPercentage ? -Math.round(blobPercentage) + "%" : 0 }}
+          style={{ backgroundPositionX: positionCalculate(i) }}
           className={`${buttonStyles} ${
             position !== null ? (position.currentElement === i ? currentButtonStyles : null) : null
           }

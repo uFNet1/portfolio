@@ -26,6 +26,7 @@ export default function MainPage() {
     const onScroll = () => {
       setTimeout(() => {
         continiousScrolling(window.scrollY);
+        calculatePagesSizes(window.scrollY);
       }, 100);
     };
     // const onScroll = () => continiousScrolling(window.scrollY);
