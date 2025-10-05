@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import type { elementInfo, positionOnPage } from "../types";
 
 export default function Header({
@@ -28,12 +27,11 @@ export default function Header({
   ];
   function calculateRelativePercentage() {
     if (position && scrollData) {
+      const margin = document.querySelector("#buttonsHeader")?.clientHeight;
       const step = position.elementHeight;
       const currPage = step * (position.currentElement + 1);
-      const currScroll = scrollData.scrollValue;
-      const percentage = (currScroll - currPage) / step;
-      // console.log(position.currentElement);
-      // console.log(percentage * 100);
+      const currScroll = margin ? scrollData.scrollValue - margin : scrollData.scrollValue;
+      const percentage = currScroll > currPage ? (currScroll - currPage) / step : 0;
       return percentage * 100;
     }
   }
@@ -48,31 +46,16 @@ export default function Header({
     }
   }
   const blobPercentage = calculateRelativePercentage();
-  useEffect(() => {
-    // calculateRelativePercentage();
-  }, [scrollData]);
-  // const [blobPercentage, setBlobPercentage] = useState<number>(0);
+
   const buttonStyles = "rounded-full px-3 py-1 backdrop-blur-2xl relative";
-  const selectedButtonStyles = `bg-linear-to-tr from-cyan-600/50 to-blue-500/60`;
-
-  // const currentButtonStyles = `bg-linear-to-r from-gray-500/0 to-blue-500 bg-[length:200%_100%] bg-position-[${
-  //   blobPercentage ? 100 / blobPercentage : null
-  // }%]`;
   const currentButtonStyles = `bg-linear-to-r from-blue-500 from-50% via-51% via-gray-500/0 to-gray-500/0 bg-[length:200%_100%]`;
-  // const currentButtonStyles = `bg-linear-to-r from-blue-500 to-gray-500/0 bg-[length:200%_100%] bg-position-[-64%_0%]`;
   const nextButtonStyles = `bg-linear-to-r from-gray-500/0 from-50% via-51% via-blue-500 to-blue-500 bg-[length:200%_100%]`;
-
   const prevButtonStyles = `bg-linear-to-l to-blue-500 from-gray-500/0 bg-[length:200%_100%]`;
-  // const nextButtonStyles = `bg-linear-to-r from-blue-500 to-gray-500/0 bg-[length:200%_100%] bg-position-[1%]`;
-  // const nextButtonStyles = `bg-red-500`;
+
   function positionCalculate(i: number) {
-    // console.log(blobPercentage);
     if (!blobPercentage || !position) return 0;
     const direction = checkDirection(blobPercentage);
-    // console.log(direction);
     if (direction === "next") {
-      // console.log(blobPercentage);
-      // console.log(position.currentElement);
       if (i === position?.currentElement + 1) {
         return -Math.round(blobPercentage) + "%";
       } else if (i === position?.currentElement) return -Math.round(blobPercentage) + "%";
@@ -84,7 +67,10 @@ export default function Header({
     if (i === position?.currentElement + 1) return Math.round(blobPercentage);
   }
   return (
-    <header className="w-fit flex flex-row justify-center gap-4 max-md:mx-auto text-base md:text-2xl font-light md:right-36 top-10 sticky md:float-right items-center z-50">
+    <header
+      id="buttonsHeader"
+      className="w-fit flex flex-row justify-center gap-4 max-md:mx-auto text-base md:text-2xl font-light md:right-36 top-10 sticky md:float-right items-center z-50"
+    >
       {buttons.map((e, i) => (
         <a
           key={i}
@@ -103,15 +89,6 @@ export default function Header({
                 ? prevButtonStyles
                 : null
               : null
-            // blobPercentage
-            //   ? blobPercentage > 0
-            //     ? i === position?.currentElement + 1
-            //       ? nextButtonStyles
-            //       : null
-            //     : null
-            //   : i === position?.currentElement - 1
-            //   ? nextButtonStyles
-            //   : null
           }`}
         >
           {e.text}
