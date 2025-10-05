@@ -57,7 +57,8 @@ export default function MainPage() {
     const elementHeight = self.innerHeight;
     const elementsCount = Math.round(fullHeight / elementHeight);
     const currentOffset = page.clientHeight + Math.round(scroll);
-    const currentElement = Math.round((currentOffset - elementHeight) / elementHeight);
+    const currentElement = Math.floor((currentOffset - elementHeight) / elementHeight);
+    console.log(currentElement);
     positionData = {
       elements: elementsCount,
       currentElement: currentElement,

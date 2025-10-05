@@ -32,6 +32,8 @@ export default function Header({
       const currPage = step * (position.currentElement + 1);
       const currScroll = scrollData.scrollValue;
       const percentage = (currScroll - currPage) / step;
+      // console.log(position.currentElement);
+      // console.log(percentage * 100);
       return percentage * 100;
     }
   }
@@ -67,7 +69,10 @@ export default function Header({
     // console.log(blobPercentage);
     if (!blobPercentage || !position) return 0;
     const direction = checkDirection(blobPercentage);
+    // console.log(direction);
     if (direction === "next") {
+      // console.log(blobPercentage);
+      // console.log(position.currentElement);
       if (i === position?.currentElement + 1) {
         return -Math.round(blobPercentage) + "%";
       } else if (i === position?.currentElement) return -Math.round(blobPercentage) + "%";
