@@ -5,8 +5,8 @@ export default function About() {
   return (
     <Section styling={sectionStyles}>
       <h1 className="text-2xl md:text-8xl font-light mx-auto mb-16">About me</h1>
-      <div className="flex flex-col md:flex-row gap-16">
-        <div className="max-md:hidden w-1/4 md:w-1/3 my-auto" id="about">
+      <div id="about" className="flex flex-col md:flex-row gap-16">
+        <div className="max-md:hidden w-1/4 md:w-1/3 my-auto">
           <img
             width="309px"
             height="483px"

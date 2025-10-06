@@ -1,9 +1,8 @@
-import { useState, type JSX } from "react";
+import { useState } from "react";
 import Section from "../Section";
 import vestBanner from "/vest/banner.webp";
 import Button from "../Button";
 import ShowcaseContainer from "../ShowcaseContainer";
-// import ProjectVest from "../../routes/projects/about";
 export default function Project() {
   const sectionStyles = "bg-linear-to-b from-black via-neutral-700 to-black from-0% via-50% to-100% relative";
   const buttonStyles =
@@ -40,12 +39,8 @@ export default function Project() {
       setIsScrollbarAtEnd(false);
     }
   }
-  function showFullProject(tsxFile: JSX.Element) {
-    setCurrentProject(tsxFile);
-  }
   const [isScrollbarAtStart, setIsScrollbarAtStart] = useState(true);
   const [isScrollbarAtEnd, setIsScrollbarAtEnd] = useState(false);
-  const [currentProject, setCurrentProject] = useState<JSX.Element | null>(null);
   return (
     <Section styling={sectionStyles}>
       <div className="relative" id="projects">
@@ -65,7 +60,6 @@ export default function Project() {
         >
           &gt;
         </button>
-        {currentProject}
         <div
           onScrollEnd={(e) => scrollHandler(e)}
           id="scrollableProjects"
