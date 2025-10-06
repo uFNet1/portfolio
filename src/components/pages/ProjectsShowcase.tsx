@@ -47,7 +47,7 @@ export default function Project() {
         {/* Left */}
         <button
           onClick={() => clickHandler("left")}
-          className={`${buttonStyles} ${isScrollbarAtStart ? "hidden" : "left-0"}`}
+          className={`max-sm:hidden ${buttonStyles} ${isScrollbarAtStart ? "hidden" : "left-0"}`}
           type="button"
         >
           &lt;
@@ -55,7 +55,7 @@ export default function Project() {
         {/* Right */}
         <button
           onClick={() => clickHandler("right")}
-          className={`${buttonStyles} ${isScrollbarAtEnd ? "hidden" : "right-0"}`}
+          className={`max-sm:hidden ${buttonStyles} ${isScrollbarAtEnd ? "hidden" : "right-0"}`}
           type="button"
         >
           &gt;
