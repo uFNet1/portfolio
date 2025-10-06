@@ -73,13 +73,7 @@ export default function Project() {
             subheader="From a little button to a big app"
             imgSrc={vestBanner}
           />
-          <ShowcaseContainer
-            header="The Gazeta Vest Project"
-            subheader="From a little button to a big app"
-            imgSrc={vestBanner}
-          />
-
-          <div className="flex flex-none flex-col gap-4 justify-center align-middle items-center w-full snap-center">
+          <div className="flex flex-none flex-col gap-4 justify-center align-middle items-center w-full snap-center px-4 py-2 text-center">
             <h1 className="text-3xl">Let's make a new one together</h1>
             <h2 className="text-lg text-neutral-400">Head to Contact page</h2>
             <Button styling={"hover:bg-stone-700"} to={"#contacts"}>

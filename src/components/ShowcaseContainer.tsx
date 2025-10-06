@@ -13,14 +13,14 @@ export default function ShowcaseContainer({
     <div className="flex-none w-10/12 snap-center px-4 py-2">
       <Link
         to="/projects/vest"
-        className="justify-items-center flex flex-col gap-4 cursor-pointer"
+        className="justify-items-center flex flex-col gap-3 cursor-pointer text-center"
         viewTransition={true}
         reloadDocument={false}
         hashScrollIntoView={false}
         resetScroll={true}
       >
-        <h1 className="text-3xl text-center">{header}</h1>
-        <h2 className="text-lg text-neutral-400">{subheader}</h2>
+        <h1 className="text-xl md:text-3xl text-center">{header}</h1>
+        <h2 className="text-base md:text-lg text-neutral-400">{subheader}</h2>
         <img
           className="w-full rounded border border-white lg:w-1/2 transition duration-300 hover:scale-105 hover:cursor-pointer"
           src={imgSrc}
