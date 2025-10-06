@@ -4,7 +4,7 @@ import vestBanner from "/vest/banner.webp";
 import Button from "../Button";
 import ShowcaseContainer from "../ShowcaseContainer";
 export default function Project() {
-  const sectionStyles = "bg-linear-to-b from-black via-neutral-700 to-black from-0% via-50% to-100% relative";
+  const sectionStyles = "bg-linear-to-b from-black via-neutral-700 to-black from-0% via-50% to-100% relative px-0!";
   const buttonStyles =
     "cursor-pointer absolute px-4 py-2 active:bg-neutral-400/20 top-1/2 rounded -translate-y-1/2 h-full hover:shadow-2xl hover:bg-neutral-700/20 text-2xl font-bold";
   function clickHandler(direction: string) {
@@ -63,8 +63,16 @@ export default function Project() {
         <div
           onScrollEnd={(e) => scrollHandler(e)}
           id="scrollableProjects"
-          className="flex flex-row overflow-x-auto snap-mandatory snap-x pb-5"
+          className="flex flex-row overflow-x-auto snap-mandatory snap-x pb-5 gap-3 "
         >
+          <div className="snap-center">
+            <div className="w-4"></div>
+          </div>
+          <ShowcaseContainer
+            header="The Gazeta Vest Project"
+            subheader="From a little button to a big app"
+            imgSrc={vestBanner}
+          />
           <ShowcaseContainer
             header="The Gazeta Vest Project"
             subheader="From a little button to a big app"
